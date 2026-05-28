@@ -1,6 +1,8 @@
 package com.msb.vo;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -18,6 +20,8 @@ public class AirVo {
 
     private Integer districtId;
 
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date monitorTime;
 
     private Integer pm10;
@@ -26,6 +30,7 @@ public class AirVo {
 
     private String monitoringStation;
 
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date lastModifyTime;
 
     private String districtName;
