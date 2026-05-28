@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.msb.mapper.AirMapper">
+
+    <!--    //    查询所有空气并多表查询且可以根据地区筛选-->
+    <!--    List<Air> findAirByDistrict(Integer pageNum, Integer pageSize, Integer district);;-->
+
+    <select id="findAirByDistrict"
+            resultType="com.msb.vo.AirVo">
+
+        select
+        a.*,
+        d.name as district_name
+        from air a
+        left join district d
+        on a.district_id = d.id
+
+        <where>
+            <if test="district != null">
+                and a.district_id = #{district}
+            </if>
+        </where>
+
+        limit #{start},#{size}
+
+    </select>
+
+</mapper>
