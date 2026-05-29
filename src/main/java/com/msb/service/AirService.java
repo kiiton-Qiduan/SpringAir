@@ -1,9 +1,10 @@
 package com.msb.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.msb.Form.AirAddForm;
+import com.msb.Form.*;
 import com.msb.pojo.*;
 import com.msb.vo.AirVo;
+import jakarta.validation.Valid;
 
 import java.util.*;
 
@@ -20,4 +21,6 @@ public interface AirService {
     Page<AirVo> findAirByDistrict(Integer pageNum, Integer pageSize, Integer district);
 
     Integer airAdd(AirAddForm airAddForm);
+
+    Integer AirUpdate(@Valid AirUpdateForm airUpdateForm);
 }

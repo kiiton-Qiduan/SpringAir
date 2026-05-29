@@ -1,7 +1,8 @@
 package com.msb.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.msb.Form.AirAddForm;
+import com.msb.Form.*;
 import com.msb.mapper.*;
 import com.msb.pojo.*;
 import com.msb.service.AirService;
@@ -76,5 +77,12 @@ public class AirServiceImpl implements AirService {
         int row = airMapper.insert(air);
 
         return row;
+    }
+
+    @Override
+    public Integer AirUpdate(AirUpdateForm airUpdateForm) {
+        Air air = new Air();
+        BeanUtils.copyProperties(airUpdateForm,air);
+        return airMapper.updateById(air);
     }
 }

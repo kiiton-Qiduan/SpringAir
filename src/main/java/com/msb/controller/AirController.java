@@ -1,7 +1,7 @@
 package com.msb.controller;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.msb.Form.AirAddForm;
+import com.msb.Form.*;
 import com.msb.pojo.*;
 import com.msb.service.AirService;
 import com.msb.util.ResultUtil;
@@ -66,4 +66,24 @@ public class AirController {
         }
 
     }
+
+    @PutMapping("/air/update")
+    public ResultVo AirUpdate(@Valid @RequestBody AirUpdateForm airUpdateForm,BindingResult bindingResult){
+
+        if(bindingResult.hasErrors()){
+            String defaultMessage = bindingResult.getFieldError().getDefaultMessage();
+            ResultVo error = ResultUtil.error(400, defaultMessage);
+            return error;
+        }
+
+        Integer i = airService.AirUpdate(airUpdateForm);
+
+        if(i == 1){
+            return ResultUtil.ok();
+        }else{
+            System.out.println("【修改空气质量】  修改失败！！");
+            throw new RuntimeException("【修改空气质量】  修改失败！！");
+        }
+    }
+
 }
