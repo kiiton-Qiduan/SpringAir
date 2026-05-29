@@ -85,4 +85,11 @@ public class AirServiceImpl implements AirService {
         BeanUtils.copyProperties(airUpdateForm,air);
         return airMapper.updateById(air);
     }
+
+    @Override
+    public Integer airDelete(Integer id) {
+        return airMapper.deleteById(id);
+    }
+
+
 }

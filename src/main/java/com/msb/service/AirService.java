@@ -23,4 +23,6 @@ public interface AirService {
     Integer airAdd(AirAddForm airAddForm);
 
     Integer AirUpdate(@Valid AirUpdateForm airUpdateForm);
+
+    Integer airDelete(Integer id);
 }

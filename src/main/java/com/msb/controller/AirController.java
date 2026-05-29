@@ -86,4 +86,20 @@ public class AirController {
         }
     }
 
+    @DeleteMapping("/air/delete")
+    public ResultVo AirDelete(@RequestParam Integer id){
+
+        if(id == null){
+            throw new RuntimeException("没有传入id！");
+        }
+
+        Integer i = airService.airDelete(id);
+        if(i == 1){
+            return ResultUtil.ok();
+        }
+        else{
+            throw new RuntimeException("删除失败！");
+        }
+    }
+
 }
