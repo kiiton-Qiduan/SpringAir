@@ -15,7 +15,7 @@ import java.util.List;
  * @version: 1.0
  */
 
-public interface AirMapper extends BaseMapper {
+public interface AirMapper extends BaseMapper<Air> {
 
     List<AirVo> findAirByDistrict(
             @Param("start") Integer start,

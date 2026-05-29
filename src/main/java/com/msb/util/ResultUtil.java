@@ -34,4 +34,14 @@ public class ResultUtil {
 
     }
 
+    public static ResultVo error(Integer code,String msg){
+
+        ResultVo resultVo = new ResultVo();
+        resultVo.setCode(code);
+        resultVo.setMsg(msg);
+        return resultVo;
+
+    }
+
+
 }

@@ -1,10 +1,12 @@
 package com.msb.service.impl;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.msb.Form.AirAddForm;
 import com.msb.mapper.*;
 import com.msb.pojo.*;
 import com.msb.service.AirService;
 import com.msb.vo.AirVo;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -58,5 +60,21 @@ public class AirServiceImpl implements AirService {
 
         return page;
 
+    }
+
+    /**
+     * 添加空气
+     * @param airAddForm
+     * @return
+     */
+    @Override
+    public Integer airAdd(AirAddForm airAddForm) {
+
+        Air air = new Air();
+        BeanUtils.copyProperties(airAddForm,air);
+
+        int row = airMapper.insert(air);
+
+        return row;
     }
 }

@@ -1,6 +1,7 @@
 package com.msb.service;
 
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.msb.Form.AirAddForm;
 import com.msb.pojo.*;
 import com.msb.vo.AirVo;
 
@@ -17,4 +18,6 @@ public interface AirService {
     List<District> findDistrictList();
 
     Page<AirVo> findAirByDistrict(Integer pageNum, Integer pageSize, Integer district);
+
+    Integer airAdd(AirAddForm airAddForm);
 }
